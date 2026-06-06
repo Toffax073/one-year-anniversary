@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Year Of Us ❤️</title>
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Achtergrond effecten -->
+    <div id="hearts-container"></div>
+    <div class="light-beams"></div>
+    <div class="bokeh"></div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+        <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="giftOpenSound" preload="auto">
+        <source src="assets/audio/gift-open.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicToggle" class="music-btn">
+        🎵
+    </button>
+
+    <!-- Swiper -->
+    <div class="swiper">
+
+        <div class="swiper-wrapper">
+
+            <!-- START -->
+            <section class="swiper-slide start-screen">
+
+                <h1 class="main-title">
+                    One Year of Us ❤️
+                </h1>
+
+                <p class="subtitle">
+                    Een kleine terugblik op ons eerste jaar samen
+                </p>
+
+                <button id="startWrapped" class="start-btn">
+                    Start Our Wrapped
+                </button>
+
+            </section>
+
+            <!-- SLIDE 1 -->
+            <section class="swiper-slide stats-screen">
+
+                <h2>
+                    Our Most Visited Place... Each Other ❤️
+                </h2>
+
+                <div class="counter-wrapper">
+
+                    <div id="visitCounter">
+                        0
+                    </div>
+
+                    <div id="crown" class="hidden">
+                        👑
+                    </div>
+
+                </div>
+
+                <p>
+                    64 keer bij elkaar op bezoek geweest.
+                </p>
+
+                <button id="continueToTravel" class="start-btn">
+                    Continue ❤️
+                </button>
+
+            </section>
+
+            <!-- SLIDE 2 -->
+            <section class="swiper-slide travel-screen">
+
+                <h2>
+                    Who Traveled The Most? 🚗❤️
+                </h2>
+
+                <div class="percentage-container">
+
+                    <div class="person-card" data-person="felix">
+
+                        <div class="loser-label">LOST</div>
+
+                        <h3>Felix</h3>
+
+                        <div class="percentage">
+                            18.75%
+                        </div>
+
+                    </div>
+
+                    <div class="person-card" data-person="beatrice">
+
+                        <div class="winner-trophy" aria-hidden="true">🏆</div>
+
+                        <div class="winner-label">WINNER</div>
+
+                        <h3>Beatrice</h3>
+
+                        <div class="percentage">
+                            81.25%
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Distance never mattered when it meant seeing each other.
+                </p>
+
+                <h4 id="winnerAnnouncement" class="winner-announcement">
+                    Beatrice wins the Traveling Championship 🏆
+                </h4>
+                <button id="toVacation" class="start-btn hidden">
+                    Our Adventures ✈️
+                </button>
+
+            </section>
+
+            <!-- SLIDE 3 -->
+            <section class="swiper-slide vacation-screen">
+
+                <h2 id="vacationTitle">
+                    Our Adventures Together ✈️❤️
+                </h2>
+
+                <div id="tripCounter">
+                    0
+                </div>
+
+                <p>
+                    4 unforgettable trips together
+                </p>
+
+                <div class="vacation-gallery-layout">
+
+                    <div class="destination-list">
+
+                        <button class="destination" data-destination="crete">
+                            🇬🇷 Kreta, Griekenland
+                        </button>
+
+                        <button class="destination" data-destination="paris">
+                            🇫🇷 Parijs, Frankrijk
+                        </button>
+
+                        <button class="destination" data-destination="fuerteventura">
+                            🇪🇸 Costa Calma, Fuerteventura
+                        </button>
+
+                        <button class="destination" data-destination="portugal">
+                            🇵🇹 Parchal, Portugal
+                        </button>
+
+                    </div>
+
+                    <div id="galleryPanel" class="gallery-panel">
+                        <div class="gallery-placeholder">
+                            Selecteer een bestemming om onze herinneringen te bekijken ❤️
+                        </div>
+                    </div>
+
+                </div>
+
+                <button id="toLetter" class="start-btn hidden">
+                    Continue to My Letter ❤️
+                </button>
+
+                <div id="galleryLightbox" class="gallery-lightbox hidden" role="dialog" aria-modal="true">
+                    <button id="closeLightbox" class="lightbox-close" aria-label="Close gallery">×</button>
+                    <button id="previousImage" class="lightbox-nav lightbox-previous">Previous</button>
+                    <img id="lightboxImage" alt="">
+                    <button id="nextImage" class="lightbox-nav lightbox-next">Next</button>
+                    <div id="lightboxCounter" class="lightbox-counter"></div>
+                </div>
+
+            </section>
+
+            <!-- SLIDE 4 -->
+            <section class="swiper-slide letter-screen">
+
+                <div id="typewriter"></div>
+
+                <div class="signature">
+                    Felix, your Chocolate King ❤️
+                </div>
+
+                <button id="openGiftButton" class="start-btn hidden">
+                    Open My Gift
+                </button>
+
+            </section>
+
+            <!-- SLIDE 5 -->
+            <section class="swiper-slide gift-screen">
+
+                <div id="giftBox">
+                    🎁
+                </div>
+
+                <div id="giftContent" class="gift-modal hidden" role="dialog" aria-modal="true">
+                    <div id="giftParticles" class="gift-particles"></div>
+
+                    <div class="gift-modal-card">
+                        <button id="closeGiftModal" class="gift-modal-close" aria-label="Close gift">×</button>
+
+                        <h2>❤️ Mijn Cadeau Voor Jou ❤️</h2>
+
+                        <p>
+                            Vanaf vandaag heb je toegang tot mijn locatie via Zoek Mijn iPhone.
+                        </p>
+
+                        <h3>
+                            Because home is wherever you are ❤️
+                        </h3>
+                    </div>
+                </div>
+
+                <button id="finishStoryButton" class="start-btn hidden">
+                    Finish Our Story ❤️
+                </button>
+
+            </section>
+
+            <!-- END -->
+            <section class="swiper-slide ending-screen">
+
+                <div id="mainHeart">
+                    ❤️
+                </div>
+
+                <h1>
+                    Happy One Year Anniversary ❤️
+                </h1>
+
+                <button id="replayBtn">
+                    Replay Our Story
+                </button>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
